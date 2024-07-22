@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');//campo sin signo solo tipo positibo y sea un nuemero entero
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('body');
