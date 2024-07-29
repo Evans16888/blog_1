@@ -17,10 +17,6 @@ class PostController extends Controller
     public function create(post $post){
         return view('posts.create',compact('post'));
     }
-    public function edit(post $post){
-        return view('posts.edit', ['post'=> $post]);
-         //tambien se puede usar  ['post'=> $post] al igual que compact()
-    }
     public function store(Request $request){
         $request->validate([
             'title'=>'required',
@@ -34,6 +30,26 @@ class PostController extends Controller
 
         ]);
         return redirect()->route('posts.edit', $post)->with('success', 'Post created successfully.');
+    }
+    public function edit(post $post){
+        return view('posts.edit', ['post'=> $post]);
+         //tambien se puede usar  ['post'=> $post] al igual que compact()
+    }
+
+    public function update(Request $request, Post $post){
+        $request->validate([
+            'title'=>'required',
+            'body'=>'required'
+        ]);
+
+        $post ->update([
+            'title' => $title= $request->title,
+            'slug' => str::slug('title'),
+            'body' => $request->body,
+
+        ]);
+
+        return redirect()->route('posts.edit', $post)->with('success', 'Post updated successfully.');
     }
     public function destroy(Post $post)
     {
