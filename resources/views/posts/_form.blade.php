@@ -1,25 +1,13 @@
 @csrf
-<div class="mb-4">
-    <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-        Título
-    </label>
-    <input type="text" name="title" id="title" value="{{ old('title', isset($post) ? $post->title : '') }}"
-    class="mt-1 block w-full rounded-md shadow-sm text-black"required>
-</div>
 
-<div class="mb-4">
-    <label for="content" class="block text-sm font-medium text-gray-700 dark:text-gray-300 ">
-        Contenido
-    </label>
-    <textarea name="content" id="content" rows="5"
-    class="mt-1 block w-full rounded-md shadow-sm text-black" required>{{ old('content', isset($post) ? $post->body : '') }}</textarea>
-</div>
+<label class="uppercase text-dark-700 text-xs ">Nombre</label>
+<input type="text" name="title" class="rounded border-gray-200 w-full mb-4 text-black"  value="{{ $post->title }}">
 
-<div class="flex justify-between">
-    <a href="{{route('posts.index')}}" class="text-indigo-600">Volver</a>
-    <input type="submit"
-    value="enviar"
-    class="bg-gray-800 text-white rounded px-4 py-2">
+<label class="uppercase text-dark-700 text-xs">Contenido</label>
+<textarea name="body" class="rounded border-gray-200 w-full mb-4 text-black" rows="5">{{ $post->body }}</textarea>
 
-    </input>
+<div class="flex justify-between items-center">
+    <a href="{{ route('posts.index') }}" class="text-indigo-600">Volver</a>
+
+    <input type="submit" value="Enviar" class="bg-gray-800 text-white rounded px-4 py-2">
 </div>

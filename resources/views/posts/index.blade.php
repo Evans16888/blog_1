@@ -25,7 +25,7 @@
                         <tr class="border-b border-gray-200 text-sm">
                             <td class="px-6 py-4">{{ $post->title }}</td>
                             <td class="px-6 py-4">
-                                <a href="{{ route('posts.edit', $post) }}" class="text-indigo-600">Editar</a>
+                                <a href="{{ route('posts.edit', $post) }}" class="bg-gray-800 text-white rounded px-4 py-2">Editar</a>
                             </td>
                             <td class="px-6 py-4">
                                 <!-- Agregar el formulario para eliminar el post -->
