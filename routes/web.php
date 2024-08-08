@@ -22,11 +22,11 @@ use Illuminate\Support\Facades\Route;
     Route::get('blog/{post:slug}', 'post')->name('post');
  });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::redirect('dashboard', 'posts')->name('dashboard');
 
-Route::resource( 'posts', PostController::class)->except(['show']);
+Route::resource( 'posts', PostController::class)
+    ->middleware(['auth', 'verified'])
+    ->except(['show']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

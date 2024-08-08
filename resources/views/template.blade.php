@@ -21,7 +21,7 @@
                 </form>
             </div>
             @auth
-                <a href="{{ route('Dashboard') }}">Dashboard</a>
+                <a href="{{ route('dashboard') }}">Dashboard</a>
             @else
                 <a href="{{ route('login') }}">Login</a>
             @endauth
